@@ -39,6 +39,12 @@ variable "tags" {
   default     = {}
 }
 
+variable "nat_product_version" {
+  type = number
+  default = 1
+  description = "1: traditional NAT, 2: standard NAT, default value is 1."
+}
+
 variable "routable_attachments" {
   type = map(object({
     route_table_id = string

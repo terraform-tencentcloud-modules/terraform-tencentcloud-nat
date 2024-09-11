@@ -2,6 +2,7 @@ locals {
   nat_gateway_id = var.create_nat_gateway ? concat(tencentcloud_nat_gateway.nat.*.id, [""])[0] : var.nat_gateway_id
 }
 
+
 resource "tencentcloud_nat_gateway" "nat" {
   count            = var.create_nat_gateway ? 1 : 0
   name             = var.nat_gateway_name
@@ -9,7 +10,7 @@ resource "tencentcloud_nat_gateway" "nat" {
   bandwidth        = var.nat_gateway_bandwidth
   max_concurrent   = var.nat_gateway_concurrent
   assigned_eip_set = var.nat_public_ips
-
+  nat_product_version = var.nat_product_version
   tags = var.tags
 }
 
