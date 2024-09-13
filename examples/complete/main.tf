@@ -27,6 +27,7 @@ module "nat" {
   nat_gateway_name = local.nat_gateway_name
   vpc_id = module.vpc.vpc_id
   nat_public_ips = tencentcloud_eip.eips.*.public_ip
+  nat_product_version = 2
   routable_attachments = {
     default = {
       route_table_id = module.vpc.route_table_id
