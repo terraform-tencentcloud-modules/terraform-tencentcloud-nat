@@ -5,7 +5,7 @@ locals {
 
   eips = [
     "test-nat-gateway-1",
-    "test-nat-gateway-2"
+#    "test-nat-gateway-2"
   ]
 }
 
@@ -14,6 +14,7 @@ module "vpc" {
   version = "1.1.0"
   vpc_name = local.vpc_name
   vpc_cidr = local.vpc_cidr
+  vpc_is_multicast = false
 }
 
 resource "tencentcloud_eip" "eips" {
@@ -33,4 +34,8 @@ module "nat" {
       route_table_id = module.vpc.route_table_id
     }
   }
+}
+
+output "nat" {
+  value = module.nat
 }

@@ -1,27 +1,27 @@
 variable "create_nat_gateway" {
-  type = bool
-  default = true
+  type        = bool
+  default     = true
   description = "whether create nat gateway or use an existed one"
 }
 variable "nat_gateway_id" {
-  type = string
-  default = ""
+  type        = string
+  default     = ""
   description = "used when `create_nat_gateway` is false"
 }
 
 variable "nat_gateway_name" {
-  type = string
-  default = ""
+  type        = string
+  default     = ""
   description = "nat gateway name"
 }
 variable "vpc_id" {
-  type = string
-  default = ""
+  type        = string
+  default     = ""
   description = "id of vpc where nat gateway created"
 }
 variable "nat_gateway_bandwidth" {
-  type = number
-  default = 100
+  type        = number
+  default     = 100
   description = "bandwidth of NAT Gateway"
 }
 variable "nat_gateway_concurrent" {
@@ -40,16 +40,16 @@ variable "tags" {
 }
 
 variable "nat_product_version" {
-  type = number
-  default = 1
+  type        = number
+  default     = 1
   description = "1: traditional NAT, 2: standard NAT, default value is 1."
 }
 
 variable "routable_attachments" {
   type = map(object({
-    route_table_id = string
+    route_table_id   = string
     destination_cidr = optional(string, "0.0.0.0/0")
   }))
-  default = {}
+  default     = {}
   description = "to which route tables should this nat gateway attach"
 }
