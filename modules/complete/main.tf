@@ -7,8 +7,8 @@ resource "tencentcloud_nat_gateway" "nat" {
   count            = var.create_nat_gateway ? 1 : 0
   name             = var.nat_gateway_name
   vpc_id           = var.vpc_id
-  bandwidth        = var.nat_gateway_bandwidth
-  max_concurrent   = var.nat_gateway_concurrent
+  bandwidth = var.nat_product_version == 2 ? 5000 : var.nat_gateway_bandwidth
+  max_concurrent = var.nat_product_version == 2 ? 2000000 : var.nat_gateway_concurrent
   assigned_eip_set = var.nat_public_ips
   nat_product_version = var.nat_product_version
   tags = var.tags
