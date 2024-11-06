@@ -28,9 +28,15 @@ module "nat" {
   vpc_id = module.vpc.vpc_id
   nat_public_ips = tencentcloud_eip.eips.*.public_ip
   nat_product_version = 2
+  nat_gateway_bandwidth = 5000
+  nat_gateway_concurrent = 2000000
   routable_attachments = {
     default = {
       route_table_id = module.vpc.route_table_id
     }
   }
+}
+
+output "nat" {
+  value = module.nat
 }
