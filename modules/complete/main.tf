@@ -26,3 +26,8 @@ resource "tencentcloud_route_table_entry" "route_entry" {
     ]
   }
 }
+
+resource "tencentcloud_nat_gateway_flow_monitor" "example" {
+  gateway_id = local.nat_gateway_id
+  enable     = var.enable_flow_monitor
+}

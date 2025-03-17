@@ -53,3 +53,9 @@ variable "routable_attachments" {
   default     = {}
   description = "to which route tables should this nat gateway attach"
 }
+
+variable "enable_flow_monitor" {
+  default = false
+  type = bool
+  description = "Whether to enable flow monitor"
+}
