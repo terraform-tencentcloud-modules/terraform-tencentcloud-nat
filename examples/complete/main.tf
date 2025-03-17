@@ -34,8 +34,12 @@ module "nat" {
       route_table_id = module.vpc.route_table_id
     }
   }
+  enable_flow_monitor = false
 }
 
+output "vpc" {
+  value = module.vpc
+}
 output "nat" {
   value = module.nat
 }
